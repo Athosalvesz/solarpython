@@ -2,7 +2,7 @@ import random
 
 class SolarOptimizer:
     def __init__(self):
-        # Inicializa o arquivo de log e listas para armazenar histórico de geração e consumo.
+  
         self.log_file = "solar_optimizer.log"
         self.historia_geracao = []
         self.historia_consumo = []
@@ -44,8 +44,7 @@ class SolarOptimizer:
             "Utilize eletrodomésticos eficientes.",
             "Aproveite a luz natural durante o dia.",
         ]
-        return random.sample(dicas, 3)  # Seleciona 3 dicas aleatórias
-
+        return random.sample(dicas, 3) 
     def formatar_dicas_economia(self):
         """Formata as dicas em um layout de lista."""
         dicas = self.sugerir_economia_energia()
@@ -75,10 +74,8 @@ class SolarOptimizer:
     def rodar(self):
         """Executa a simulação principal do otimizador."""
         while True:
-            # Solicita o ID do apartamento ao usuário
             apartamento_id = input("\nPor favor, insira o ID do apartamento que deseja verificar: ").strip()
             
-            # Pergunta ao usuário qual dia deseja simular
             dia = input("Simular geração e consumo para qual dia? ").strip()
             print(f"\nSimulando para o apartamento ID: {apartamento_id}, dia: {dia}")
 
@@ -89,7 +86,7 @@ class SolarOptimizer:
             recomendacao = self.otimizar_uso_energia(gerado, consumido)
             print(f"Recomendação:\n{recomendacao}\n{'='*40}")
 
-            # Pergunta se o usuário gostaria de dicas
+            
             resposta = input("Gostaria de receber dicas sobre economia de energia? (s/n): ").strip().lower()
             if resposta == 's':
                 dicas = self.formatar_dicas_economia()
@@ -98,11 +95,11 @@ class SolarOptimizer:
             self.salvar_log(apartamento_id, dia, gerado, consumido, recomendacao)
             self.mostrar_estatisticas()
 
-            # Pergunta se o usuário quer simular outro dia
+        
             if input("Simular outro dia? (s/n): ").strip().lower() != 's':
                 print("Simulação encerrada.")
                 break
 
 if __name__ == "__main__":
-    # Inicializa e executa o otimizador de energia solar
+
     SolarOptimizer().rodar()
